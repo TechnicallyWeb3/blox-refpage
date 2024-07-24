@@ -1,0 +1,96 @@
+.referralStats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.stats {
+    display: flex;
+    width: 50%;
+    border: 1.5px solid #000000;
+}
+
+.container {
+    border: 1.5px solid #000000;
+    width: 50%;
+
+}
+
+.referral {
+    border: 1.5px solid #000000;
+}
+
+
+
+.header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.boxItem {
+    display: flex;
+    justify-content: center;
+    border: 1.5px solid #000000;
+    padding: 40px;
+    gap: 20px;
+    font-size: 16px;
+    margin: 10px;
+
+
+}
+
+.boxItem div:last-child {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.point {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.points {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 55%;
+    font-size: 40px;
+}
+
+
+@media (max-width: 768px) {
+    .referralStats {
+        flex-direction: column;
+    }
+
+    .stats {
+        width: 100%;
+    }
+
+    .boxItem {
+
+        padding: 25px;
+
+
+
+    }
+
+    .container {
+        width: 100%;
+    }
+}

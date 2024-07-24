@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #c0c0c0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.loginBtn {
+    padding: 5px;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+
+.loginBtn:hover {
+    background-color: #878787;
+}

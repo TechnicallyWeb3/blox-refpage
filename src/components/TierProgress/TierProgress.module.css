@@ -1,0 +1,23 @@
+.tierProgress {
+    margin-bottom: 20px;
+    border: 1.5px solid black;
+    padding: 10px;
+}
+
+.progressBar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid black;
+}
+
+.progress {
+    height: 10px;
+    background-color: #000000;
+}
+.point
+{
+    text-align: center;
+    margin-top: 10px;
+}

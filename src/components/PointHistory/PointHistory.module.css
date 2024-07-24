@@ -1,0 +1,13 @@
+.pointHistory {
+    padding: 10px;
+    border: 1.5px solid #000000;
+}
+
+.chart {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #000000;
+    font-size: 30px;
+}
