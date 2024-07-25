@@ -6,7 +6,7 @@ import user from '../../assets/image.png'
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 function UserInfo() {
-  const { isAuthenticated, user, primaryWallet } = useDynamicContext();
+  const { isAuthenticated, user } = useDynamicContext();
 
   if (!isAuthenticated || !user.userId) {
     return null; // Return nothing if the user is not authenticated or no email/wallet is present
