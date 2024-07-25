@@ -12,10 +12,13 @@ function ReferralProgram() {
             {/* <h2>Blox Referral Program</h2>
             <p >Sign up, refer friends, earn points!</p> */}
             <Landing />
+            <div className={styles.content}>
             <UserInfo />
             <ReferralStats />
             <TierProgress />
             <PointHistory />
+            </div>
+           
         </div>
     );
 }

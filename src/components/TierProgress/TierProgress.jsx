@@ -4,7 +4,7 @@ import styles from './TierProgress.module.css';
 function TierProgress() {
     return (
         <div className={styles.tierProgress}>
-            <p style={{fontWeight:"700",marginBottom:"10px"}}>Tier 1</p>
+            <p style={{fontSize:"30px",fontWeight:"700",marginBottom:"10px"}}>Tier 1</p>
             <div className={styles.neumorphicprogressbar}>
                 <div className={styles.progressfill} style={{ width: '20%' }}></div>
             </div>

@@ -3,7 +3,7 @@
     border: 0.5rem solid transparent;
     border-radius: 1rem;
     color: hsl(0 0% 10%);
-    background: none;
+    background-color: #dcefff00 !important;
     padding-left: 10px;
     padding-right: 10px;
     --shadow:
@@ -23,14 +23,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #c0c0c000;
+    background-color: #dcefff00 !important;
     margin-top: 20px;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
-    background-color: transparent;
+    background-color: #dcefff00 !important;
 }
 
 .loginBtn {
@@ -43,7 +43,7 @@
     border: 0.5rem solid transparent;
     border-radius: 1rem;
     color: hsl(0 0% 10%);
-    background: none;
+    background-color: #dcefff00 !important;
 
     --shadow:
         -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
@@ -57,7 +57,7 @@
     &:hover, &:focus-visible {
         scale: 1.05
       }
-      background-color: #dcefff91;
+      background-color: #dcefff00 !important;
 }
 
 .loginBtn:hover {
