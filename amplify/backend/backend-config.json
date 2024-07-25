@@ -1,0 +1,43 @@
+{
+  "api": {
+    "referralAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "bloxrefpage88ffd409": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_bloxrefpage88ffd409_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
+    "AMPLIFY_function_bloxrefpage88ffd409_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    }
+  }
+}

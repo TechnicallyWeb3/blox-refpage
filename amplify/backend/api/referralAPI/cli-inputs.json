@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api": {
+      "name": "/api",
+      "lambdaFunction": "bloxrefpage88ffd409",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
