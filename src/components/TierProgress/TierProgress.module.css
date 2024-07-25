@@ -1,8 +1,49 @@
 .tierProgress {
     margin-bottom: 20px;
-    border: 1.5px solid black;
     padding: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+
+    
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0 0% 10%);
+    background: none;
+
+    --shadow:
+        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.1s;
+
+    transition: all 0.5s;
+
+    &:hover, &:focus-visible {
+        scale: 1.01
+      }
 }
+
+.neumorphicprogressbar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+ 
+    /* Soft shadows */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -4px -4px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  
+  .progressfill {
+    width: 50%; /* Adjust as needed */
+    height: 100%;
+    border-radius: 10px; /* Rounded corners */
+    /* Gradient background */
+    background-image: linear-gradient(to right, rgb(168, 184, 255), #4393FE); /* Example gradient colors */
+  }
+  
+  
 
 .progressBar {
     width: 100%;
@@ -20,4 +61,5 @@
 {
     text-align: center;
     margin-top: 10px;
+    font-weight: 600;
 }

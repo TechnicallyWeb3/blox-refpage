@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bloxrefpage-dev-80252-authRole",
+      "UnauthRoleArn": "arn:aws:iam::058264431039:role/amplify-bloxrefpage-dev-80252-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::058264431039:role/amplify-bloxrefpage-dev-80252-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-bloxrefpage-dev-80252-deployment",
+      "UnauthRoleName": "amplify-bloxrefpage-dev-80252-unauthRole",
+      "StackName": "amplify-bloxrefpage-dev-80252",
+      "StackId": "arn:aws:cloudformation:us-east-2:058264431039:stack/amplify-bloxrefpage-dev-80252/7deeeb70-4ac4-11ef-b94c-024797f65e45",
+      "AmplifyAppId": "d1zph0ps5dfo0"
+    },
+    "categories": {
+      "function": {
+        "bloxrefpage88ffd409": {
+          "deploymentBucketName": "amplify-bloxrefpage-dev-80252-deployment",
+          "s3Key": "amplify-builds/bloxrefpage88ffd409-45596b755949435a744a-build.zip"
+        }
+      },
+      "api": {
+        "referralAPI": {}
+      }
+    }
+  }
+}

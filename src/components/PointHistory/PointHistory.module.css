@@ -1,13 +1,64 @@
 .pointHistory {
-    padding: 10px;
     border: 1.5px solid #000000;
+    border-radius: 20px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0 0% 10%);
+    background: none;
+
+    margin-top: 30px;
+
+    
+ 
+    --shadow:
+        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.5s;
 }
 
 .chart {
+    position: relative;
     height: 200px;
+    width: 100%; /* Adjust width as needed */
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1.5px solid #000000;
+    border: 1.5px solid #0000006c;
+    border-radius: 30px;
     font-size: 30px;
+    overflow: hidden;
+}
+
+.chartImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px); /* Apply blur effect */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Additional blur effect */
+}
+
+.overlayText {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000; /* Text color */
 }

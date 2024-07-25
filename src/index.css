@@ -1,6 +1,15 @@
+@font-face {
+    font-family: 'NotoSans';
+    src: url('../src/assets/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
+    /* You can include additional font formats for cross-browser compatibility */
+}
+
+
 *{
     margin: 0px;
     padding: 0px;
-        background-color: #dbdbdb;
-        font-family: sans-serif;
+    font-family: NotoSans;
+    background: #E5E9F4;
+    
+
 }
