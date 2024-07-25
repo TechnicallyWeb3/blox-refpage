@@ -9,7 +9,7 @@ function Header() {
     return (
         <header className={styles.header}>
 
-            <div className={styles.logos}><img src={logo} alt="" /></div>
+            {/* <div className={styles.logos}><img src={logo} alt="" /></div> */}
 
 
         </header>
