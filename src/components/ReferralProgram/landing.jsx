@@ -1,22 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import style from "./ReferralProgram.module.css";
 import Spline from '@splinetool/react-spline';
-import img from '../../assets/reed.png'
-export default function Landing() {
+import img from '../../assets/reed.png';
+import img1 from '../../assets/reed-mob.png';
 
-  function onLoad(spline) {
-    console.log("LOADed");
-  }
+export default function Landing() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial check on component mount
+    handleResize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className={style.app}>
-  
-        <div className={style.content}>
-          <div className={style.spline}>
-            <img src={img}></img>
-            {/* <Spline scene="https://prod.spline.design/OMnkCZ5C5v-pP3n6/scene.splinecode" onLoad={onLoad} /> */}
-          </div>
+      <div className={style.content}>
+        <div className={style.spline}>
+          {isMobile ? (
+            <img src={img1} alt="Mobile Image" />
+          ) : (
+            // <Spline scene="https://prod.spline.design/OMnkCZ5C5v-pP3n6/scene.splinecode" />
+            <img src={img} alt="Mobile Image" />
+
+          )}
         </div>
+      </div>
     </div>
   );
 }
