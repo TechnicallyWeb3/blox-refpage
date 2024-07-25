@@ -57,7 +57,7 @@ function UserInfo() {
       .catch(error => console.error('Error:', error));
   }
 
-  const handleRegister = (referrerCode) => {
+  const handleRegister = () => {
     if (isAuthenticated && user?.userId) {
       handleAddUser(user.userId, referrerCode)
     }
@@ -89,11 +89,12 @@ function UserInfo() {
         if (response.data && !response.data.error) {
           console.log("User data found.");
         } else {
-          handleRegister(referralCode);
+          handleRegister();
           console.log("User registered.");
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        handleRegister();
       }
     };
 
@@ -108,6 +109,7 @@ function UserInfo() {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        handleRefresh();
       }
     };
 
