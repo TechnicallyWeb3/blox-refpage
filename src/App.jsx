@@ -5,6 +5,7 @@ import {
 // import { EthersExtension } from "@dynamic-labs/ethers-v5";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <DynamicContextProvider
@@ -18,4 +19,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
