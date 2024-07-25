@@ -5,12 +5,69 @@
     padding: 15px;
     border: 1px solid #e0e0e0;
     margin-bottom: 20px;
-    margin-top: 20px;
-    border: 1.4px solid black;
+    margin-top: 30px;
     font-weight: 600;
+    border-radius: 20px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+
+    
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0 0% 10%);
+    background: none;
+
+    --shadow:
+        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.5s;
+
+    &:hover, &:focus-visible {
+        scale: 1.01
+      }
 }
 
-.referralCode {}
+.name {
+    font-size: 30px;
+}
+
+.userId {
+    font-size: 36px;
+}
+
+
+.neumorphicbtn {
+    font-size: 20px;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 40px;
+    color: #6D7587;
+    background-color: var(--back-color);
+    /*box-shadow: 3px 4px 6px 1px rgba(0, 0, 0, 0.3), 
+                -2px -2px 4px 2px rgba(255, 255, 255, 1), 
+                inset -14px -14px 20px -10px rgba(0, 0, 0, 0.1),
+                inset 14px 14px 20px -10px rgba(255, 255, 255, 0.5) !important;  */
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, .15),
+                -7px -7px 20px rgba(255, 255, 255, 1),
+                inset 0px 0px 4px rgba(255, 255, 255, .2),
+                inset 7px 7px 15px rgba(55, 84, 170, 0),
+                inset -7px -7px 20px rgba(255, 255, 255, 0),
+                0px 0px 4px rgba(255, 255, 255, 0) !important;
+    transition: box-shadow .25s ease !important;
+
+    
+  }
+  
+
+.referralCode {
+
+}
+
+.refCode {
+    font-size: 30px;
+}
 
 .refresh_container {
     display: flex;
@@ -20,12 +77,25 @@
     margin-top: 10px;
 }
 
+.refresh_container button img{
+    width: 30px;
+}
+
 .refresh_container button {
-    padding: 5px;
+    padding: 15px;
     text-align: center;
     font-size: 13px;
     cursor: pointer;
-}
+    transition: transform 0.3s ease; /* Smooth transition over 0.3 seconds */
+  
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.05); /* Scale up to 1.21 on hover or focus */
+    }
+  }
+  
+  
+  
 
 
 @media (max-width: 768px) {

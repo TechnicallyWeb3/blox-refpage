@@ -6,7 +6,7 @@ function ReferralStats() {
         <div className={styles.referralStats}>
             <div className={styles.container}>
                 <div className={styles.box}>
-                    <div className={styles.header}>Referrals:</div>
+                    <div className={styles.header}>Referrals</div>
 
                     <div className={styles.boxItem}>
                         <div>Direct Referrals</div>
@@ -25,7 +25,7 @@ function ReferralStats() {
 
             <div className={styles.stats}>
                 {/* <div className={styles.wrapper}> */}
-                    <p className={styles.point}>Points:</p>
+                    <p className={styles.point}>Points</p>
                     <div className={styles.points}>
                         <p >1024</p>
                     </div>
