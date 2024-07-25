@@ -4,12 +4,14 @@ import UserInfo from '../UserInfo/UserInfo';
 import ReferralStats from '../ReferralStats/ReferralStats';
 import TierProgress from '../TierProgress/TierProgress';
 import PointHistory from '../PointHistory/PointHistory';
-
-function ReferralProgram() {
+import blob from '../../assets/blob.jpg'
+import Landing from './landing';
+function ReferralProgram({isSplineLoaded,setIsSplineLoaded}) {
     return (
         <div className={styles.container}>
-            <h2>Blox Referral Program</h2>
-            <p >Sign up, refer friends, earn points!</p>
+            {/* <h2>Blox Referral Program</h2>
+            <p >Sign up, refer friends, earn points!</p> */}
+            <Landing isSplineLoaded={isSplineLoaded} setIsSplineLoaded={setIsSplineLoaded}/>
             <p style={{ marginTop: "25px",fontWeight:"600" }}>Hi Chris, check out all your rewards!</p>
             <UserInfo />
             <ReferralStats />

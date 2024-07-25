@@ -1,7 +1,22 @@
-.container {
-    margin: 10px;
-    margin-bottom: 10px;
-    margin-top: 40px;
+.spline {
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.splineContainer {
+    width: 100%;
+    /* Adjust width as needed */
+    height: 400px;
+    /* Adjust height as needed */
+}
+
+.customSpline {
+    width: 100%;
+    /* Adjust width as needed */
+    height: 100%;
+    /* Adjust height as needed */
 }
 
 @media (max-width: 768px) {
