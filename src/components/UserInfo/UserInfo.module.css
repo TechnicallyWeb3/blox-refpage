@@ -1,4 +1,5 @@
 .userInfo {
+    width: 45%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,6 +29,13 @@
         scale: 1.01
       }
 }
+
+.userbox {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
 
 .userdetails img {
     width: 50px;
@@ -107,6 +115,7 @@
     .userInfo {
         align-items: unset;
         flex-direction: column;
+        width: 100%;
     }
 
     .referralCode {
