@@ -29,6 +29,11 @@
       }
 }
 
+.userdetails img {
+    width: 50px;
+    border-radius: 5px;
+}
+
 .name {
     font-size: 30px;
 }

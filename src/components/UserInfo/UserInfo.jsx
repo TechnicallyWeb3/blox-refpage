@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './UserInfo.module.css';
 import copy from '../../assets/copy.png'
 import refresh from '../../assets/refresh-arrow.png'
+import user from '../../assets/image.png'
 function UserInfo() {
     return (
         <div className={styles.userInfo}>
-            <div>
+            <div className={styles.userdetails}>
+                <img src={user} alt="" />
                 <p className={styles.name}>Chris Hash</p>
                 <p>@chrishash</p>
             </div>
