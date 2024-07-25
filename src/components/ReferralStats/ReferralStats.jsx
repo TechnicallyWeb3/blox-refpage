@@ -29,6 +29,7 @@ function ReferralStats() {
                     <p className={styles.point}>Points</p>
                     <div className={styles.points}>
                         <p>1024</p>
+                    <img src={point} alt="" />
                     </div>
                 </div>
             </div>

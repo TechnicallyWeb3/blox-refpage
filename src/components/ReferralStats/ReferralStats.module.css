@@ -59,6 +59,8 @@
 
 .stats {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
     border-radius: 20px;
     padding: 20px;
@@ -106,6 +108,7 @@ background-position: 0 0,10px 10px;
 .wrapper {
     padding: 10px;
     background-color: #00000000 !important;
+    margin-left: 80px;
 }
 .stats img{ 
    
@@ -135,7 +138,7 @@ background-position: 0 0,10px 10px;
 }
 
 .point {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     margin: 10px;
     background-color: #00000000 !important;
@@ -154,6 +157,11 @@ background-position: 0 0,10px 10px;
 
 .points p {
     background-color: #00000000 !important;
+}
+
+.wrapper img {
+    width: 80px;
+    margin-left: 20px;
 }
 
 @media (max-width: 768px) {
