@@ -18,7 +18,7 @@ function UserInfo() {
                 <img src={user} alt="" />
                 <p className={styles.name}>{user.firstName} {user.lastName}</p>
                 <p>@{user.username}</p>
-                <p>@{user.email}</p>
+                <p>{user.email}</p>
             </div>
             <div className={styles.referralCode}>
                 <p>Referral Code:</p>
