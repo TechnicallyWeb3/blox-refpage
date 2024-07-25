@@ -13,7 +13,8 @@
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "viem": "^2.17.8"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
