@@ -18,9 +18,7 @@
     color: hsl(0 0% 10%);
     background: none;
 
-    display: grid;
-    place-content: center;
-    gap: 1rem;
+
 
     --shadow:
         -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
@@ -105,7 +103,7 @@
 }
 
 .point {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 700;
     margin: 10px;
     font-size: 30px;
@@ -118,7 +116,7 @@
     align-items: center;
     padding: 20px;
     width: 55%;
-    font-size: 24px;
+    font-size: 64px;
     font-weight: bold;
     
 }
