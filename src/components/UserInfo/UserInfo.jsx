@@ -6,7 +6,7 @@ import user from '../../assets/image.png'
 function UserInfo() {
     return (
         <div className={styles.userbox}>
-
+            
             <div className={styles.userInfo}>
                 <div className={styles.userdetails}>
                     <img src={user} alt="" />
@@ -23,6 +23,7 @@ function UserInfo() {
                     </div>
                 </div>
             </div>
+
 
 
         </div>

@@ -1,5 +1,5 @@
 .userInfo {
-    width: 45%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,6 +11,8 @@
     border-radius: 20px;
     padding: 30px;
     background-color: rgb(255, 255, 255);
+    margin-right: 20%;
+    margin-left: 20%;
 
     
     border: 0.5rem solid transparent;
@@ -116,6 +118,8 @@
         align-items: unset;
         flex-direction: column;
         width: 100%;
+        margin-right: 0%;
+        margin-left: 0%;
     }
 
     .referralCode {

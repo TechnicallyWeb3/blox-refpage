@@ -12,7 +12,6 @@ function ReferralProgram() {
             {/* <h2>Blox Referral Program</h2>
             <p >Sign up, refer friends, earn points!</p> */}
             <Landing />
-            <p style={{ marginTop: "25px",fontWeight:"600" }}>Hi Chris, check out all your rewards!</p>
             <UserInfo />
             <ReferralStats />
             <TierProgress />
