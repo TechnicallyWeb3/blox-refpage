@@ -64,7 +64,7 @@ app.get('/api/referralCodeData', (req, res) => {
     const { id } = req.query;
     
     if (!id) {
-        return res.status(500).json({ error: "ID required use ...referralData?id=[blox-user-id]" });
+        return res.status(500).json({ error: "ID required use ...referralCodeData?id=[blox-user-id]" });
     }
 
     pool.query('CALL getReferralCodeData(?)', [id], (error, results) => {
@@ -82,6 +82,32 @@ app.get('/api/referralCodeData', (req, res) => {
         // }
 
         res.json(results[0][0]);
+        console.log(res);
+    });
+});
+
+app.get('/api/pointsData', (req, res) => {
+    const { id } = req.query;
+    
+    if (!id) {
+        return res.status(500).json({ error: "ID required use ...pointsData?id=[blox-user-id]" });
+    }
+
+    pool.query('CALL getPointsData(?)', [id], (error, results) => {
+
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+
+        // if (results[0].length === 0) {
+        //     return res.status(500).json({ error: "no points found" });
+        // }
+
+        // if (results[0].length > 1) {
+        //     return res.status(500).json({ error: "duplicate user error" });
+        // }
+
+        res.json(results[0]);
         console.log(res);
     });
 });
