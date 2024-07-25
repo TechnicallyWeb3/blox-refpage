@@ -1,8 +1,11 @@
 .spline {
     display: flex;
     justify-content: center;
-    margin-left: 100px;
     margin-top: 20px;
+}
+
+.spline img {
+    width: 100%;
 }
 
 .splineContainer {
