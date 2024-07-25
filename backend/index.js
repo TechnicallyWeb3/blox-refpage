@@ -32,7 +32,7 @@ app.get('/api/userData', (req, res) => {
 
 
         res.json(results[0][0]);
-        console.log(res);
+        console.log(`Data retrieved for user ${id}`);
     });
 });
 
@@ -56,7 +56,7 @@ app.get('/api/referralData', (req, res) => {
         }
 
         res.json(results[0][0]);
-        console.log(res);
+        console.log(`Data retrieved for user ${id}`);
     });
 });
 
@@ -82,7 +82,7 @@ app.get('/api/referralCodeData', (req, res) => {
         // }
 
         res.json(results[0][0]);
-        console.log(res);
+        console.log(`Data retrieved for user ${id}`);
     });
 });
 
@@ -108,7 +108,7 @@ app.get('/api/pointsData', (req, res) => {
         // }
 
         res.json(results[0]);
-        console.log(res);
+        console.log(`Data retrieved for user ${id}`);
     });
 });
 
