@@ -16,6 +16,9 @@ const pool = mysql.createPool({
 // API endpoint to get data from the database
 app.get('/api/userData', (req, res) => {
     const { id } = req.query;
+    if (!id) {
+        return res.status(500).json({ error: "ID required use ...userData?id=[blox-user-id]" });
+    }
     pool.query('CALL getUserData(?)', [id], (error, results) => {
         if (error) {
             return res.status(500).json({ error: error.message });
@@ -27,6 +30,56 @@ app.get('/api/userData', (req, res) => {
             return res.status(500).json({ error: "duplicate user error" });
         }
 
+
+        res.json(results[0][0]);
+        console.log(res);
+    });
+});
+
+// API endpoint to get data from the database
+app.get('/api/referralData', (req, res) => {
+    const { id } = req.query;
+
+    if (!id) {
+        return res.status(500).json({ error: "ID required use ...referralData?id=[blox-user-id]" });
+    }
+
+    pool.query('CALL getReferralData(?)', [id], (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+        if (results[0].length === 0) {
+            return res.status(500).json({ error: "user not found" });
+        }
+        if (results[0].length > 1) {
+            return res.status(500).json({ error: "duplicate user error" });
+        }
+
+        res.json(results[0][0]);
+        console.log(res);
+    });
+});
+
+app.get('/api/referralCodeData', (req, res) => {
+    const { id } = req.query;
+    
+    if (!id) {
+        return res.status(500).json({ error: "ID required use ...referralData?id=[blox-user-id]" });
+    }
+
+    pool.query('CALL getReferralCodeData(?)', [id], (error, results) => {
+
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+
+        if (results[0].length === 0) {
+            return res.status(500).json({ error: "no referral codes found" });
+        }
+
+        // if (results[0].length > 1) {
+        //     return res.status(500).json({ error: "duplicate user error" });
+        // }
 
         res.json(results[0][0]);
         console.log(res);
