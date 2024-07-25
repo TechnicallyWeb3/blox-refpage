@@ -7,9 +7,9 @@ import TierProgress from '../TierProgress/TierProgress';
 import PointHistory from '../PointHistory/PointHistory';
 
 function ReferralProgram() {
-    const { isAuthenticated, user, primaryWallet } = useDynamicContext();
+    const { isAuthenticated, user } = useDynamicContext();
 
-    if (!isAuthenticated || !(user?.email || primaryWallet)) {
+    if (!isAuthenticated || !user?.userId) {
         return <p>Please log in to access the referral program.</p>; // Optional: Provide a message or redirect
     }
 

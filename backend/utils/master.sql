@@ -223,7 +223,8 @@ CREATE PROCEDURE getReferralCodeData(
 BEGIN
     SELECT *
     FROM codes
-    WHERE blox_id = blox_id_in;
+    WHERE blox_id = blox_id_in
+    AND code_active = TRUE;
 END$$
 
 DELIMITER ;
