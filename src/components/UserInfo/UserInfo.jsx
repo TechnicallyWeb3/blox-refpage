@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from './UserInfo.module.css';
+import copy from '../../assets/copy.png'
+import refresh from '../../assets/refresh-arrow.png'
+import user from '../../assets/image.png'
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 function UserInfo() {
@@ -10,20 +13,21 @@ function UserInfo() {
   }
 
   return (
-    <div>
+    <div className={styles.userdetails}>
       <div className={styles.userInfo}>
+        <img src={user} alt="" />
         <div>
-          <p className="text-lg font-bold mb-2">Hi! {user?.firstName} {user?.lastName}</p>
-          <p className="text-lg font-bold mb-2">{user?.username}</p>
+          <p className={styles.name}>Hi! {user?.firstName} {user?.lastName}</p>
+          <p className={styles.name}>{user?.username}</p>
         </div>
       </div>
 
-      <div className={styles.referralCode}>
-        <p>Referral Code:</p>
-        <div className={styles.refresh_container}>
-          <p>CLOUD420</p>
-          <button>Refresh code</button>
-          <button>Copy code</button>
+            <div className={styles.referralCode}>
+                <p>Referral Code:</p>
+                <div className={styles.refresh_container}>
+                    <p className={styles.refCode}>CLOUD420</p>
+                    <button className={styles.neumorphicbtn}><img src={refresh} alt="" /></button>
+                    <button className={styles.neumorphicbtn}><img src={copy} alt="" /></button>
         </div>
       </div>
     </div>

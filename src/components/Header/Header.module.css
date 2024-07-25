@@ -1,9 +1,30 @@
+
+.logos {
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0 0% 10%);
+    background: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    --shadow:
+        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.5s;
+
+    &:hover, &:focus-visible {
+        scale: 1.01
+      }
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #c0c0c0;
+    background-color: #c0c0c000;
+    margin-top: 20px;
 }
 
 .logo {
@@ -18,13 +39,32 @@
 }
 
 .loginBtn {
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
 
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0 0% 10%);
+    background: none;
+
+    --shadow:
+        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.1s;
+
+    transition: all 0.5s;
+
+    &:hover, &:focus-visible {
+        scale: 1.05
+      }
+      background-color: #dcefff91;
 }
 
 .loginBtn:hover {
-    background-color: #878787;
+    background-color: #87878700;
 }

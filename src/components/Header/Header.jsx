@@ -1,14 +1,21 @@
 import React from 'react';
 import styles from './Header.module.css';
-import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+
+import {
+    DynamicWidget,
+} from "@dynamic-labs/sdk-react-core";
+
+import logo from '../../assets/BLOXlogo.svg'
+
 
 function Header() {
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
-                <img src="/blox400.jpg" alt="Logo" className={styles.logoImage} />
-            </div>
+
+            <div className={styles.logos}><img src={logo} alt="" /></div>
             <DynamicWidget />
+
+
         </header>
     );
 }
