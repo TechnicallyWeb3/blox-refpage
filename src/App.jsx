@@ -1,4 +1,5 @@
 import Home from './pages/Home/Home'
+import { useState } from 'react';
 import {
   DynamicContextProvider,
 } from "@dynamic-labs/sdk-react-core";
