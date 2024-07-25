@@ -1,112 +1,71 @@
 .referralStats {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 30px;
     margin-top: 30px;
-    gap: 20px;
-
 }
 
-.stats {
+.statsContainer {
     display: flex;
-    width: 50%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container, .stats {
+    flex: 1;
     border-radius: 20px;
     padding: 20px;
-
-    border: 0.5rem solid transparent;
-    border-radius: 1rem;
     color: hsl(0 0% 10%);
     background: none;
-
-
-
-    --shadow:
+    border: 0.5rem solid transparent; /* Ensure background doesn't affect shadow */
+    box-shadow:
         -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
         .5rem .5rem 1rem hsl(0 0% 50% / .5);
-    box-shadow: var(--shadow);
-    outline: none;
-    transition: all 0.1s;
-
-    transition: all 0.5s;
-
-    &:hover, &:focus-visible {
-        scale: 1.01
-      }
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on transform and box-shadow */
 }
 
-.container {
-    border: 1.5px solid #000000;
-    width: 50%;
-    border-radius: 20px;
-    padding: 20px;
-    
-    border: 0.5rem solid transparent;
-    border-radius: 1rem;
-    color: hsl(0 0% 10%);
-    background: none;
-
-    --shadow:
+.container:hover,
+.stats:hover,
+.container:focus-visible,
+.stats:focus-visible {
+    transform: scale(1.02); /* Slightly increased scale */
+    box-shadow:
         -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
-        .5rem .5rem 1rem hsl(0 0% 50% / .5);
-    box-shadow: var(--shadow);
-    outline: none;
-    transition: all 0.1s;
-
-    transition: all 0.5s;
-
-    &:hover, &:focus-visible {
-        scale: 1.01
-      }
-
+        .5rem .5rem 1rem hsl(0 0% 50% / .5),
+        0 0 10px rgba(0, 0, 0, 0.2); /* Optionally add a bit more shadow on hover */
 }
-
-.referral {
-    border: 1.5px solid #000000;
-}
-
-
 
 .header {
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 10px;
-    margin: auto;
-}
-
-.wrapper {
-    padding: 10px;
 }
 
 .box {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
-
 }
 
 .boxItem {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 20px;
-    padding: 40px;
-    gap: 20px;
+    padding: 20px;
     font-size: 24px;
     margin: 10px;
-
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
-
+    background: none; /* Ensure background doesn't affect shadow */
+    box-shadow: 
+        inset -5px -5px 9px rgba(255, 255, 255, 0.45), 
+        inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+    transition: transform 0.3s ease; /* Smooth transition on transform */
 }
 
-.boxItem div:last-child {
-    font-size: 24px;
-    font-weight: bold;
+.boxItem:hover,
+.boxItem:focus-visible {
+    transform: scale(1.02); /* Slightly increased scale */
 }
 
 .point {
     font-size: 36px;
-    font-weight: 700;
-    margin: 10px;
-    font-size: 30px;
     font-weight: 700;
 }
 
@@ -115,31 +74,20 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    width: 55%;
     font-size: 64px;
     font-weight: bold;
-    
 }
 
-
 @media (max-width: 768px) {
-    .referralStats {
+    .statsContainer {
         flex-direction: column;
     }
 
-    .stats {
+    .container, .stats {
         width: 100%;
     }
 
     .boxItem {
-
         padding: 25px;
-        border-radius: 20px;
-
-
-    }
-
-    .container {
-        width: 100%;
     }
 }
