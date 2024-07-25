@@ -65,7 +65,7 @@
     border-radius: 20px;
     padding: 20px;
 
-    color: hsl(0, 0%, 85%);
+    color: #ffffff;
 
 background: linear-gradient(347deg, rgba(0,124,255,1) 0%, rgba(0,35,198,1) 100%);
 
@@ -129,7 +129,10 @@ background-position: 0 0,10px 10px;
     gap: 20px;
     font-size: 24px;
     margin: 10px;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+    background-color: #007bff00;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.144);
+
+    
 }
 
 .boxItem div:last-child {
