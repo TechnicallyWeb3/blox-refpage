@@ -5,6 +5,18 @@ const mysql = require('mysql2');
 const app = express();
 const port = 4001;
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Middleware to validate API key
+const validateApiKey = (req, res, next) => {
+    const apiKey = req.headers['x-api-key'];
+    if (!apiKey || apiKey !== process.env.API_KEY) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+    next();
+};
+
 // Create a MySQL connection pool
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
@@ -112,12 +124,12 @@ app.get('/api/pointsData', (req, res) => {
     });
 });
 
-// API endpoint to add a user
-app.post('/api/addUser', (req, res) => {
+// Secure POST endpoints with API key validation middleware
+app.post('/api/addUser', validateApiKey, (req, res) => {
     const { id, referralCode } = req.body;
 
     if (!id) {
-        return res.status(500).json({ error: "ID required" });
+        return res.status(400).json({ error: "ID required" });
     }
 
     const code = referralCode ? referralCode : "";
@@ -126,34 +138,84 @@ app.post('/api/addUser', (req, res) => {
         if (error) {
             return res.status(500).json({ error: error.message });
         }
-        res.json({ message: "User added successfully" });
+        res.status(201).json({ message: "User added successfully" });
     });
 });
 
-// API endpoint to set a referral code
-app.post('/api/setReferralCode', (req, res) => {
+// Combined API endpoint to set a referral code and deactivate old code if provided
+app.post('/api/setReferralCode', validateApiKey, (req, res) => {
     const { id, oldReferralCode, newReferralCode } = req.body;
 
     if (!id || !newReferralCode) {
-        return res.status(500).json({ error: "ID and newReferralCode required" });
+        return res.status(400).json({ error: "ID and newReferralCode required" });
     }
 
-    if (oldReferralCode) {
-        pool.query('UPDATE codes SET code_active = FALSE WHERE referral_code = ?', [id], (error, results) => {
+    const deactivateOldCode = oldReferralCode ? new Promise((resolve, reject) => {
+        pool.query('UPDATE codes SET code_active = FALSE WHERE referral_code = ?', [oldReferralCode], (error, results) => {
             if (error) {
-                return res.status(500).json({ error: error.message });
+                reject(error);
+            } else {
+                resolve();
             }
-            // res.json({ message: "Old Code deactivated" });
         });
-    }
+    }) : Promise.resolve();
 
-    pool.query('CALL setReferralCode(?, ?, TRUE)', [id, newReferralCode], (error, results) => {
-        if (error) {
-            return res.status(500).json({ error: error.message });
-        }
-        res.json({ message: "Referral code updated successfully" });
-    });
+    deactivateOldCode
+        .then(() => {
+            pool.query('CALL setReferralCode(?, ?, TRUE)', [id, newReferralCode], (error, results) => {
+                if (error) {
+                    return res.status(500).json({ error: error.message });
+                }
+                res.status(200).json({ message: "Referral code updated successfully" });
+            });
+        })
+        .catch((error) => {
+            res.status(500).json({ error: error.message });
+        });
 });
+
+// // API endpoint to add a user
+// app.post('/api/addUser', (req, res) => {
+//     const { id, referralCode } = req.body;
+
+//     if (!id) {
+//         return res.status(500).json({ error: "ID required" });
+//     }
+
+//     const code = referralCode ? referralCode : "";
+
+//     pool.query('CALL addUser(?, ?, ?)', [id, id, code], (error, results) => {
+//         if (error) {
+//             return res.status(500).json({ error: error.message });
+//         }
+//         res.json({ message: "User added successfully" });
+//     });
+// });
+
+// // API endpoint to set a referral code
+// app.post('/api/setReferralCode', (req, res) => {
+//     const { id, oldReferralCode, newReferralCode } = req.body;
+
+//     if (!id || !newReferralCode) {
+//         return res.status(500).json({ error: "ID and newReferralCode required" });
+//     }
+
+//     if (oldReferralCode) {
+//         pool.query('UPDATE codes SET code_active = FALSE WHERE referral_code = ?', [id], (error, results) => {
+//             if (error) {
+//                 return res.status(500).json({ error: error.message });
+//             }
+//             // res.json({ message: "Old Code deactivated" });
+//         });
+//     }
+
+//     pool.query('CALL setReferralCode(?, ?, TRUE)', [id, newReferralCode], (error, results) => {
+//         if (error) {
+//             return res.status(500).json({ error: error.message });
+//         }
+//         res.json({ message: "Referral code updated successfully" });
+//     });
+// });
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

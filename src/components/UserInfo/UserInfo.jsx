@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import styles from './UserInfo.module.css';
 import copy from '../../assets/copy.png';
 import refresh from '../../assets/refresh-arrow.png';
@@ -20,11 +22,136 @@ const generateReferralCode = () => {
 
 function UserInfo() {
   const { isAuthenticated, user } = useDynamicContext();
-  const [referralCode, setReferralCode] = useState(generateReferralCode());
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  const referrerCode = "ABCDE"
+
+  // const location = useLocation();
+
+  const handleAddUser = async (id, code) => {
+    fetch('http://localhost:4001/api/addUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ id: id, referralCode: code })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+
+  const handleSetCode = async (id, newCode, oldCode) => {
+    fetch('http://localhost:4001/api/setReferralCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ id: id, oldReferralCode: oldCode, newReferralCode: newCode })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+
+  const handleRegister = (referrerCode) => {
+    if (isAuthenticated && user?.userId) {
+      handleAddUser(user.userId, referrerCode)
+    }
+
+    setReferralCode(newCode);
+    return newCode;
+  };
 
   const handleRefresh = () => {
-    setReferralCode(generateReferralCode());
+    const newCode = generateReferralCode();
+    const oldCode = referralCode;
+    if (isAuthenticated && user?.userId) {
+      handleSetCode(user.userId, newCode, oldCode)
+    }
+
+    setReferralCode(newCode);
+    return newCode;
   };
+
+  useEffect(() => {
+    // const searchParams = new URLSearchParams(location.search);
+    // const urlReferralCode = searchParams.get('referralCode');
+    // const referralCode = urlReferralCode ? urlReferralCode : "";
+
+    const fetchUserData = async () => {
+      try {
+        console.log(`Fetching data for ${user?.userId}`)
+        const response = await axios.get(`http://localhost:4001/api/userData?id=${user?.userId}`);
+        if (response.data && !response.data.error) {
+          console.log("User data found.");
+        } else {
+          handleRegister(referralCode);
+          console.log("User registered.");
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const fetchReferralCodeData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4001/api/referralCodeData?id=${user?.userId}`);
+        if (response.data && !response.data.error) {
+          console.log(response.data.referral_code);
+          setReferralCode(response.data.referral_code);
+        } else {
+          handleRefresh();
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (isAuthenticated && user?.userId && !isLoggedIn) {
+      setIsLoggedIn(true);
+      fetchUserData();
+      fetchReferralCodeData();
+      console.log("Logged In");
+    }
+  }, [isAuthenticated, user, isLoggedIn]);
+
+  // useEffect(() => {
+  //   if (isAuthenticated && user?.userId && !isLoggedIn) {
+  //     setIsLoggedIn(true);
+
+  //     axios.get(`http://localhost:4001/api/getUserData?id=${user?.userId}`)
+  //       .then(response => {
+  //         if (!response.error) {
+  //           console.log("User data found.")
+  //         } else {
+  //           handleRegister();
+  //           console.log("User registered.")
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching data:', error);
+  //       });
+
+  //     axios.get(`http://localhost:4001/api/getReferralCodeData?id=${user?.userId}`)
+  //       .then(response => {
+  //         if (!response.error) {
+  //           console.log(response.referral_code);
+  //           setReferralCode(response.referral_code);
+  //         } else {
+  //           handleRefresh();
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching data:', error);
+  //       });
+
+  //     console.log("Logged In")
+  //   }
+  // }, []);
 
   if (!isAuthenticated || !user.userId) {
     return null; // Return nothing if the user is not authenticated or no email/wallet is present
