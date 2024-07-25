@@ -12,6 +12,11 @@
     background-color: transparent;
 }
 
+.logoImage {
+   height: 80px;
+   width: auto;
+}
+
 .loginBtn {
     padding: 5px;
     text-align: center;
