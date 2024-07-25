@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ReferralStats.module.css';
+import point from "../../assets/reward.png"
 
 function ReferralStats() {
     return (
