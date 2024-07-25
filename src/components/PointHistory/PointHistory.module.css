@@ -31,7 +31,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1.5px solid #000000;
+    border: 1.5px solid #0000006c;
+    border-radius: 30px;
     font-size: 30px;
     
 }
