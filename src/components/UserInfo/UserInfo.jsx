@@ -143,7 +143,7 @@ function UserInfo() {
         <p>{user.email}</p>
       </div>
       <div className={styles.referralCode}>
-        <p>Referral Code:</p>
+        <p>User Info</p>
         <div className={styles.refresh_container}>
           <p className={styles.refCode}>{referralCode}</p>
           <button className={styles.neumorphicbtn} onClick={handleRefresh}>
