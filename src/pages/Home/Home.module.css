@@ -1,13 +1,15 @@
 .Home {
     background: #E5E9F4;
-/* background: linear-gradient(347deg, rgba(28,120,217,1) 0%, rgba(219,235,251,1) 100%); */
-margin-left: 2%;
-margin-right: 2%;
+    /* background: linear-gradient(347deg, rgba(28,120,217,1) 0%, rgba(219,235,251,1) 100%); */
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .Home {
+        margin-right: 0%;
+        margin-left: 0%;
         margin-right: 0%;
     }
 }
