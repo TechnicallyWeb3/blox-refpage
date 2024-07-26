@@ -1,32 +1,36 @@
 .userInfo {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px;
     border: 1px solid #e0e0e0;
     margin-bottom: 20px;
-    margin-top: 30px;
+    margin-top: 60px;
     font-weight: 600;
     border-radius: 20px;
     padding: 30px;
-    background-color: rgb(255, 255, 255);
+    background: rgb(0,124,255) !important;
+    background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
+    margin-right: 20%;
+    margin-left: 20%;
 
-    
-    border: 0.5rem solid transparent;
-    border-radius: 1rem;
-    color: hsl(0 0% 10%);
-    background: none;
-
-    --shadow:
-        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
-        .5rem .5rem 1rem hsl(0 0% 50% / .5);
-    box-shadow: var(--shadow);
     outline: none;
     transition: all 0.5s;
 
     &:hover, &:focus-visible {
         scale: 1.01
-      }
+    }
+}
+
+.userbox {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.userdetails {
+    background: rgba(0, 123, 255, 0) !important;
 }
 
 .userdetails img {
@@ -34,14 +38,19 @@
     border-radius: 5px;
 }
 
+.userdetails p {
+    background: rgba(0, 123, 255, 0) !important;
+    color: white;
+}
+
 .name {
     font-size: 30px;
+    background: rgba(0, 123, 255, 0) !important;
 }
 
 .userId {
     font-size: 36px;
 }
-
 
 .neumorphicbtn {
     font-size: 20px;
@@ -49,29 +58,42 @@
     padding: 10px 40px;
     border-radius: 40px;
     color: #6D7587;
-    background-color: var(--back-color);
-    /*box-shadow: 3px 4px 6px 1px rgba(0, 0, 0, 0.3), 
-                -2px -2px 4px 2px rgba(255, 255, 255, 1), 
-                inset -14px -14px 20px -10px rgba(0, 0, 0, 0.1),
-                inset 14px 14px 20px -10px rgba(255, 255, 255, 0.5) !important;  */
-    box-shadow: 7px 7px 15px rgba(55, 84, 170, .15),
-                -7px -7px 20px rgba(255, 255, 255, 1),
-                inset 0px 0px 4px rgba(255, 255, 255, .2),
-                inset 7px 7px 15px rgba(55, 84, 170, 0),
-                inset -7px -7px 20px rgba(255, 255, 255, 0),
-                0px 0px 4px rgba(255, 255, 255, 0) !important;
-    transition: box-shadow .25s ease !important;
 
-    
-  }
-  
+    transition: all 0.5s;
+
+    &:hover, &:focus-visible {
+        scale: 1.01
+    }
+}
+
+.referralLink {
+    margin-top: 10px;
+    background: rgba(0, 123, 255, 0) !important;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.referralLink a {
+    color: black;
+    text-decoration: none;
+}
+
+.referralLink a:hover {
+    text-decoration: underline;
+}
 
 .referralCode {
-
+    background: rgba(0, 123, 255, 0) !important;
 }
 
 .refCode {
     font-size: 30px;
+}
+
+.referralCode p {
+    background: rgba(0, 123, 255, 0) !important;
+    color: white;
 }
 
 .refresh_container {
@@ -80,9 +102,10 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    background: rgba(0, 123, 255, 0) !important;
 }
 
-.refresh_container button img{
+.refresh_container button img {
     width: 30px;
 }
 
@@ -91,22 +114,21 @@
     text-align: center;
     font-size: 13px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Smooth transition over 0.3 seconds */
-  
+    transition: transform 0.3s ease;
+
     &:hover,
     &:focus-visible {
-      transform: scale(1.05); /* Scale up to 1.21 on hover or focus */
+        transform: scale(1.05);
     }
-  }
-  
-  
-  
-
+}
 
 @media (max-width: 768px) {
     .userInfo {
         align-items: unset;
         flex-direction: column;
+        width: 100%;
+        margin-right: 0%;
+        margin-left: 0%;
     }
 
     .referralCode {
@@ -118,10 +140,21 @@
         gap: 20px;
         justify-content: flex-start;
         margin-top: 0px;
-
     }
 
     .refresh_container button {
         width: 100%;
+        padding: 10px;
+    }
+
+    .refCode {
+        font-size: 20px;
+    }
+
+    .referralCode p {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-weight: 900;
+     background: rgba(0, 123, 255, 0) !important; 
     }
 }

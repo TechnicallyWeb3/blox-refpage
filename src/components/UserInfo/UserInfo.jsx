@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import styles from './UserInfo.module.css';
 import copy from '../../assets/copy.png';
 import refresh from '../../assets/refresh-arrow.png';
-import userImage from '../../assets/image.png'; // Import the image file
+import userImage from '../../assets/image.png';
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { uniqueNamesGenerator, adjectives, NumberDictionary } from 'unique-names-generator';
 
@@ -24,10 +23,15 @@ function UserInfo() {
   const { isAuthenticated, user } = useDynamicContext();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [referralLink, setReferralLink] = useState("");
 
-  const referrerCode = "ABCDE"
-
-  // const location = useLocation();
+  // Function to generate a new referral code and link
+  const generateNewReferralCode = () => {
+    const newCode = generateReferralCode();
+    setReferralCode(newCode);
+    setReferralLink(`http://localhost:5173/?referralCode=${newCode}`);
+    return newCode;
+  };
 
   const handleAddUser = async (id, code) => {
     fetch(import.meta.env.VITE_API_URL + '/api/addUser', {
@@ -57,30 +61,26 @@ function UserInfo() {
       .catch(error => console.error('Error:', error));
   }
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (isAuthenticated && user?.userId) {
-      handleAddUser(user.userId, referrerCode)
+      const newCode = generateNewReferralCode();
+      await handleAddUser(user.userId, newCode);
     }
-
-    setReferralCode(newCode);
-    return newCode;
   };
 
-  const handleRefresh = () => {
-    const newCode = generateReferralCode();
+  const handleRefresh = async () => {
+    const newCode = generateNewReferralCode();
     const oldCode = referralCode;
     if (isAuthenticated && user?.userId) {
-      handleSetCode(user.userId, newCode, oldCode)
+      await handleSetCode(user.userId, newCode, oldCode);
     }
-
-    setReferralCode(newCode);
-    return newCode;
   };
 
-  useEffect(() => {
-    // const searchParams = new URLSearchParams(location.search);
-    // const urlReferralCode = searchParams.get('referralCode');
-    // const referralCode = urlReferralCode ? urlReferralCode : "";
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => console.log('Copied to clipboard'))
+      .catch(err => console.error('Failed to copy:', err));
+  };
 
     const fetchUserData = async () => {
       try {
@@ -98,21 +98,23 @@ function UserInfo() {
       }
     };
 
-    const fetchReferralCodeData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:4001/api/referralCodeData?id=${user?.userId}`);
-        if (response.data && !response.data.error) {
-          console.log(response.data.referral_code);
-          setReferralCode(response.data.referral_code);
-        } else {
-          handleRefresh();
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        handleRefresh();
+  const fetchReferralCodeData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4001/api/referralCodeData?id=${user?.userId}`);
+      if (response.data && !response.data.error) {
+        console.log(response.data.referral_code);
+        setReferralCode(response.data.referral_code);
+        setReferralLink(`http://localhost:5173/?referralCode=${response.data.referral_code}`);
+      } else {
+        await handleRefresh();
       }
-    };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      await handleRefresh();
+    }
+  };
 
+  useEffect(() => {
     if (isAuthenticated && user?.userId && !isLoggedIn) {
       setIsLoggedIn(true);
       fetchUserData();
@@ -121,65 +123,34 @@ function UserInfo() {
     }
   }, [isAuthenticated, user, isLoggedIn]);
 
-  // useEffect(() => {
-  //   if (isAuthenticated && user?.userId && !isLoggedIn) {
-  //     setIsLoggedIn(true);
-
-  //     axios.get(`http://localhost:4001/api/getUserData?id=${user?.userId}`)
-  //       .then(response => {
-  //         if (!response.error) {
-  //           console.log("User data found.")
-  //         } else {
-  //           handleRegister();
-  //           console.log("User registered.")
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error('Error fetching data:', error);
-  //       });
-
-  //     axios.get(`http://localhost:4001/api/getReferralCodeData?id=${user?.userId}`)
-  //       .then(response => {
-  //         if (!response.error) {
-  //           console.log(response.referral_code);
-  //           setReferralCode(response.referral_code);
-  //         } else {
-  //           handleRefresh();
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error('Error fetching data:', error);
-  //       });
-
-  //     console.log("Logged In")
-  //   }
-  // }, []);
-
   if (!isAuthenticated || !user.userId) {
     return null; // Return nothing if the user is not authenticated or no email/wallet is present
   }
 
   return (
+      <div className={styles.userbox}>
     <div className={styles.userInfo}>
       <div className={styles.userdetails}>
-        <img src={userImage} alt="User" /> {/* Use the imported image here */}
+        <img src={userImage} alt="User" />
         <p className={styles.name}>{user.firstName} {user.lastName}</p>
         <p>@{user.username}</p>
         <p>{user.email}</p>
       </div>
       <div className={styles.referralCode}>
-        <p>Referral Code:</p>
+        <p>User Info</p>
         <div className={styles.refresh_container}>
           <p className={styles.refCode}>{referralCode}</p>
           <button className={styles.neumorphicbtn} onClick={handleRefresh}>
             <img src={refresh} alt="Refresh" />
           </button>
-          <button className={styles.neumorphicbtn}>
+          <button className={styles.neumorphicbtn} onClick={() => copyToClipboard(referralLink)}>
             <img src={copy} alt="Copy" />
           </button>
         </div>
+        {referralLink && <p className={styles.referralLink}>Referral Link: <a href={referralLink}  className={styles.referralLink}>{referralLink}</a></p>}
       </div>
     </div>
+</div>
   );
 }
 
