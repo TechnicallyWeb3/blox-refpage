@@ -127,17 +127,20 @@ app.get('/api/pointsData', (req, res) => {
 // Secure POST endpoints with API key validation middleware
 app.post('/api/addUser', validateApiKey, (req, res) => {
     const { id, referralCode } = req.body;
-
+    console.log(`ID: ${id} ReferralCode: ${referralCode}`);
     if (!id) {
         return res.status(400).json({ error: "ID required" });
     }
 
     const code = referralCode ? referralCode : "";
 
+    console.log(`ID: ${id} ReferralCode: ${referralCode}`);
+
     pool.query('CALL addUser(?, ?, ?)', [id, id, code], (error, results) => {
         if (error) {
             return res.status(500).json({ error: error.message });
         }
+        console.log("User added successfully");
         res.status(201).json({ message: "User added successfully" });
     });
 });
