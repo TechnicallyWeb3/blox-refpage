@@ -18,7 +18,7 @@ function ReferralStats() {
 
     const fetchUserData = async () => {
         try {
-            const response = await fetch(`http://localhost:4001/api/userData?id=${user.userId}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/userData?id=${user.userId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -31,7 +31,7 @@ function ReferralStats() {
 
     const fetchReferralData = async () => {
         try {
-            const response = await fetch(`http://localhost:4001/api/referralData?id=${user.userId}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/referralData?id=${user.userId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -44,7 +44,7 @@ function ReferralStats() {
 
     const fetchReferralCodeData = async () => {
         try {
-            const response = await fetch(`http://localhost:4001/api/referralCodeData?id=${user.userId}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/referralCodeData?id=${user.userId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }

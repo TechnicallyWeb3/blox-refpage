@@ -30,7 +30,7 @@ function UserInfo() {
   // const location = useLocation();
 
   const handleAddUser = async (id, code) => {
-    fetch('http://localhost:4001/api/addUser', {
+    fetch(import.meta.env.VITE_API_URL + '/api/addUser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function UserInfo() {
   }
 
   const handleSetCode = async (id, newCode, oldCode) => {
-    fetch('http://localhost:4001/api/setReferralCode', {
+    fetch(import.meta.env.VITE_API_URL + '/api/setReferralCode', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
