@@ -15,6 +15,21 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "dbHost": {
+      "Type": "String"
+    },
+    "dbName": {
+      "Type": "String"
+    },
+    "apiKey": {
+      "Type": "String"
+    },
+    "dbPassword": {
+      "Type": "String"
+    },
+    "dbUser": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -69,6 +84,21 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "DB_HOST": {
+              "Ref": "dbHost"
+            },
+            "DB_NAME": {
+              "Ref": "dbName"
+            },
+            "API_KEY": {
+              "Ref": "apiKey"
+            },
+            "DB_PASSWORD": {
+              "Ref": "dbPassword"
+            },
+            "DB_USER": {
+              "Ref": "dbUser"
             }
           }
         },

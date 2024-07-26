@@ -29,43 +29,37 @@ function UserInfo() {
   const generateNewReferralCode = () => {
     const newCode = generateReferralCode();
     setReferralCode(newCode);
-    setReferralLink(`http://localhost:5173/?referralCode=${newCode}`);
+    setReferralLink(`https://ref.bloxsolutions.app/?referralCode=${newCode}`);
     return newCode;
   };
 
   const handleAddUser = async (id, code) => {
-    try {
-      const response = await fetch('http://localhost:4001/api/addUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': import.meta.env.VITE_API_KEY
-        },
-        body: JSON.stringify({ id, referralCode: code })
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    fetch(import.meta.env.VITE_API_URL + '/api/addUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ id: id, referralCode: code })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
 
   const handleSetCode = async (id, newCode, oldCode) => {
-    try {
-      const response = await fetch('http://localhost:4001/api/setReferralCode', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': import.meta.env.VITE_API_KEY
-        },
-        body: JSON.stringify({ id, oldReferralCode: oldCode, newReferralCode: newCode })
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    fetch(import.meta.env.VITE_API_URL + '/api/setReferralCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ id: id, oldReferralCode: oldCode, newReferralCode: newCode })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
 
   const handleRegister = async () => {
     if (isAuthenticated && user?.userId) {
@@ -91,7 +85,7 @@ function UserInfo() {
     const fetchUserData = async () => {
       try {
         console.log(`Fetching data for ${user?.userId}`)
-        const response = await axios.get(`http://localhost:4001/api/userData?id=${user?.userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/userData?id=${user?.userId}`);
         if (response.data && !response.data.error) {
           console.log("User data found.");
         } else {
@@ -106,11 +100,11 @@ function UserInfo() {
 
   const fetchReferralCodeData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4001/api/referralCodeData?id=${user?.userId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/referralCodeData?id=${user?.userId}`);
       if (response.data && !response.data.error) {
         console.log(response.data.referral_code);
         setReferralCode(response.data.referral_code);
-        setReferralLink(`http://localhost:5173/?referralCode=${response.data.referral_code}`);
+        setReferralLink(`https://ref.bloxsolutions.app/?referralCode=${response.data.referral_code}`);
       } else {
         await handleRefresh();
       }

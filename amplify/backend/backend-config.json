@@ -23,6 +23,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_bloxrefpage88ffd409_apiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
+    "AMPLIFY_function_bloxrefpage88ffd409_dbHost": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
+    "AMPLIFY_function_bloxrefpage88ffd409_dbName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
+    "AMPLIFY_function_bloxrefpage88ffd409_dbPassword": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
+    "AMPLIFY_function_bloxrefpage88ffd409_dbUser": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bloxrefpage88ffd409"
+        }
+      ]
+    },
     "AMPLIFY_function_bloxrefpage88ffd409_deploymentBucketName": {
       "usedBy": [
         {
