@@ -18,7 +18,11 @@ function ReferralProgram() {
             {/* <h2>Blox Referral Program</h2>
             <p >Sign up, refer friends, earn points!</p> */}
             {/* isSplineLoaded={isSplineLoaded} setIsSplineLoaded={setIsSplineLoaded} */}
-            <p style={{ marginTop: "25px",fontWeight:"600", fontSize: "40px" }}>Hi {user?.firstName}, check out all your rewards!</p>
+            <div style={{ textAlign: "center" }}>
+                <p style={{ marginTop: "25px", fontWeight: "600", fontSize: "24px" }}>
+                    Hi {user?.firstName}, check out all your rewards!
+                </p>
+            </div>
             <UserInfo />
             <ReferralStats />
             <TierProgress />

@@ -10,7 +10,7 @@
     font-weight: 600;
     border-radius: 20px;
     padding: 30px;
-    background: rgb(0,124,255) !important;
+    background: rgb(0, 124, 255) !important;
     background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
     margin-right: 20%;
     margin-left: 20%;
@@ -18,7 +18,8 @@
     outline: none;
     transition: all 0.5s;
 
-    &:hover, &:focus-visible {
+    &:hover,
+    &:focus-visible {
         scale: 1.01
     }
 }
@@ -54,16 +55,22 @@
 
 .neumorphicbtn {
     font-size: 20px;
-    border: none;
     padding: 10px 40px;
     border-radius: 40px;
-    color: #6D7587;
+    color: #ffffff;
+
+    background-color: rgb(230, 230, 230) !important;
 
     transition: all 0.5s;
 
-    &:hover, &:focus-visible {
+    &:hover,
+    &:focus-visible {
         scale: 1.01
     }
+}
+
+.neumorphicbtn img {
+    background-color: rgba(255, 255, 255, 0) !important;
 }
 
 .referralLink {
@@ -84,10 +91,15 @@
 }
 
 .referralCode {
-    background: rgb(255, 255, 255) !important;
     padding: 24px;
     border-radius: 30px;
     color: black !important;
+
+    background-color: #ffffff !important;
+    opacity: 0.8;
+    background-image: radial-gradient(#444df750 0.5px, #ffffff91 0.5px);
+    background-size: 10px 10px;
+    scale: 1.001
 }
 
 .refCode {
@@ -97,6 +109,7 @@
 .referralCode p {
     background: rgba(0, 123, 255, 0) !important;
     /* color: white; */
+    font-weight: 800 !important;
 }
 
 .refresh_container {
@@ -118,11 +131,14 @@
     font-size: 13px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    border: 1px rgba(0, 0, 0, 0);
 
     &:hover,
     &:focus-visible {
         transform: scale(1.05);
     }
+
+
 }
 
 .outer {
@@ -131,15 +147,16 @@
     margin: auto;
     position: relative;
     overflow: hidden;
-  }
-  .inner {
+}
+
+.inner {
     position: absolute;
-    width:100%;
+    width: 100%;
     height: 40%;
     background: rgb(255, 255, 255);
     top: 30%;
     box-shadow: 0px 0px 30px 20px rgb(255, 255, 255);
-  }
+}
 
 @media (max-width: 768px) {
     .userInfo {
@@ -150,7 +167,16 @@
         margin-left: 0%;
         padding: 10px;
         padding-top: 20px;
-     
+
+    }
+
+    .neumorphicbtn {
+        background-color: rgb(231, 231, 231) !important;
+        
+    }
+
+    .neumorphicbtn img {
+        background-color: rgba(255, 255, 255, 0) !important;
     }
 
     .refCode {
@@ -167,20 +193,29 @@
         background: rgb(0, 73, 151) !important;
         /* color: white; */
        
+
     }
 
     .referralCode {
         margin-top: 20px;
         padding: 20px;
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
     }
 
     .refresh_container {
         display: flex;
         gap: 20px;
-        justify-content: flex-start;
-        margin-top: 0px;
-        
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        color: white;
+        background-color:#006adb !important;
+        padding: 20px;
+        border-radius: 30px;
+
     }
 
     .refresh_container button {
@@ -194,8 +229,7 @@
 
     .referralCode p {
         font-size: 20px;
-        margin-bottom: 15px;
         font-weight: 900;
-     background: rgba(0, 123, 255, 0) !important; 
+        background: rgba(0, 123, 255, 0) !important;
     }
 }
