@@ -6,16 +6,12 @@
     
     border: 0.5rem solid transparent;
     border-radius: 1rem;
-    color: hsl(0 0% 10%);
+
     background: none;
 
     margin-top: 30px;
 
-    
- 
-    --shadow:
-        -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
-        .5rem .5rem 1rem hsl(0 0% 50% / .5);
+
     box-shadow: var(--shadow);
     outline: none;
     transition: all 0.5s;
@@ -53,8 +49,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
-    backdrop-filter: blur(5px); /* Additional blur effect */
+    background: rgba(255, 255, 255, 0); /* Semi-transparent background */
+
 }
 
 .overlayText {
