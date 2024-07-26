@@ -150,9 +150,9 @@ function UserInfo() {
           <p>User Info</p>
           <div className={styles.refresh_container}>
             <p className={styles.refCode}>{referralCode}</p>
-            <button className={styles.neumorphicbtn} onClick={handleRefresh}>
+            {/*<button className={styles.neumorphicbtn} onClick={handleRefresh}>
               <img src={refresh} alt="Refresh" />
-            </button>
+            </button>*/}
             <button className={styles.neumorphicbtn} onClick={() => copyToClipboard(referralLink)}>
               <img src={copy} alt="Copy" />
             </button>
