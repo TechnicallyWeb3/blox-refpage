@@ -83,81 +83,81 @@ app.get('/api/userData', (req, res) => {
   });
 });
 
-// // API endpoint to get data from the database
-// app.get('/api/referralData', (req, res) => {
-//   const { id } = req.query;
+// API endpoint to get data from the database
+app.get('/api/referralData', (req, res) => {
+  const { id } = req.query;
 
-//   if (!id) {
-//       return res.status(500).json({ error: "ID required use ...referralData?id=[blox-user-id]" });
-//   }
+  if (!id) {
+      return res.status(500).json({ error: "ID required use ...referralData?id=[blox-user-id]" });
+  }
 
-//   pool.query('CALL getReferralData(?)', [id], (error, results) => {
-//       if (error) {
-//           return res.status(500).json({ error: error.message });
-//       }
-//       if (results[0].length === 0) {
-//           return res.status(500).json({ error: "user not found" });
-//       }
-//       if (results[0].length > 1) {
-//           return res.status(500).json({ error: "duplicate user error" });
-//       }
+  pool.query('CALL getReferralData(?)', [id], (error, results) => {
+      if (error) {
+          return res.status(500).json({ error: error.message });
+      }
+      if (results[0].length === 0) {
+          return res.status(500).json({ error: "user not found" });
+      }
+      if (results[0].length > 1) {
+          return res.status(500).json({ error: "duplicate user error" });
+      }
 
-//       res.json(results[0][0]);
-//       console.log(`Data retrieved for user ${id}`);
-//   });
-// });
+      res.json(results[0][0]);
+      console.log(`Data retrieved for user ${id}`);
+  });
+});
 
-// app.get('/api/referralCodeData', (req, res) => {
-//   const { id } = req.query;
+app.get('/api/referralCodeData', (req, res) => {
+  const { id } = req.query;
   
-//   if (!id) {
-//       return res.status(500).json({ error: "ID required use ...referralCodeData?id=[blox-user-id]" });
-//   }
+  if (!id) {
+      return res.status(500).json({ error: "ID required use ...referralCodeData?id=[blox-user-id]" });
+  }
 
-//   pool.query('CALL getReferralCodeData(?)', [id], (error, results) => {
+  pool.query('CALL getReferralCodeData(?)', [id], (error, results) => {
 
-//       if (error) {
-//           return res.status(500).json({ error: error.message });
-//       }
+      if (error) {
+          return res.status(500).json({ error: error.message });
+      }
 
-//       if (results[0].length === 0) {
-//           return res.status(500).json({ error: "no referral codes found" });
-//       }
+      if (results[0].length === 0) {
+          return res.status(500).json({ error: "no referral codes found" });
+      }
 
-//       // if (results[0].length > 1) {
-//       //     return res.status(500).json({ error: "duplicate user error" });
-//       // }
+      // if (results[0].length > 1) {
+      //     return res.status(500).json({ error: "duplicate user error" });
+      // }
 
-//       res.json(results[0][0]);
-//       console.log(`Data retrieved for user ${id}`);
-//   });
-// });
+      res.json(results[0][0]);
+      console.log(`Data retrieved for user ${id}`);
+  });
+});
 
-// app.get('/api/pointsData', (req, res) => {
-//   const { id } = req.query;
+app.get('/api/pointsData', (req, res) => {
+  const { id } = req.query;
   
-//   if (!id) {
-//       return res.status(500).json({ error: "ID required use ...pointsData?id=[blox-user-id]" });
-//   }
+  if (!id) {
+      return res.status(500).json({ error: "ID required use ...pointsData?id=[blox-user-id]" });
+  }
 
-//   pool.query('CALL getPointsData(?)', [id], (error, results) => {
+  pool.query('CALL getPointsData(?)', [id], (error, results) => {
 
-//       if (error) {
-//           return res.status(500).json({ error: error.message });
-//       }
+      if (error) {
+          return res.status(500).json({ error: error.message });
+      }
 
-//       // if (results[0].length === 0) {
-//       //     return res.status(500).json({ error: "no points found" });
-//       // }
+      // if (results[0].length === 0) {
+      //     return res.status(500).json({ error: "no points found" });
+      // }
 
-//       // if (results[0].length > 1) {
-//       //     return res.status(500).json({ error: "duplicate user error" });
-//       // }
+      // if (results[0].length > 1) {
+      //     return res.status(500).json({ error: "duplicate user error" });
+      // }
 
-//       res.json(results[0]);
-//       console.log(`Data retrieved for user ${id}`);
-//   });
-// });
+      res.json(results[0]);
+      console.log(`Data retrieved for user ${id}`);
+  });
+});
 
 /****************************
 * Example post method *
@@ -173,7 +173,58 @@ app.post('/api', function(req, res) {
 //   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 // });
 
+// Secure POST endpoints with API key validation middleware
+app.post('/api/addUser', validateApiKey, (req, res) => {
+  const { id, referralCode } = req.body;
+  console.log(`ID: ${id} ReferralCode: ${referralCode}`);
+  if (!id) {
+      return res.status(400).json({ error: "ID required" });
+  }
 
+  const code = referralCode ? referralCode : "";
+
+  console.log(`ID: ${id} ReferralCode: ${referralCode}`);
+
+  pool.query('CALL addUser(?, ?, ?)', [id, id, code], (error, results) => {
+      if (error) {
+          return res.status(500).json({ error: error.message });
+      }
+      console.log("User added successfully");
+      res.status(201).json({ message: "User added successfully" });
+  });
+});
+
+// Combined API endpoint to set a referral code and deactivate old code if provided
+app.post('/api/setReferralCode', validateApiKey, (req, res) => {
+  const { id, oldReferralCode, newReferralCode } = req.body;
+
+  if (!id || !newReferralCode) {
+      return res.status(400).json({ error: "ID and newReferralCode required" });
+  }
+
+  const deactivateOldCode = oldReferralCode ? new Promise((resolve, reject) => {
+      pool.query('UPDATE codes SET code_active = FALSE WHERE referral_code = ?', [oldReferralCode], (error, results) => {
+          if (error) {
+              reject(error);
+          } else {
+              resolve();
+          }
+      });
+  }) : Promise.resolve();
+
+  deactivateOldCode
+      .then(() => {
+          pool.query('CALL setReferralCode(?, ?, TRUE)', [id, newReferralCode], (error, results) => {
+              if (error) {
+                  return res.status(500).json({ error: error.message });
+              }
+              res.status(200).json({ message: "Referral code updated successfully" });
+          });
+      })
+      .catch((error) => {
+          res.status(500).json({ error: error.message });
+      });
+});
 
 /****************************
 * Example put method *
