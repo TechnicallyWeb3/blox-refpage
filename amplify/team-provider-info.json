@@ -15,7 +15,7 @@
       "function": {
         "bloxrefpage88ffd409": {
           "deploymentBucketName": "amplify-bloxrefpage-dev-80252-deployment",
-          "s3Key": "amplify-builds/bloxrefpage88ffd409-756d4454366e48374767-build.zip",
+          "s3Key": "amplify-builds/bloxrefpage88ffd409-4a3676716b474c7a4e46-build.zip",
           "dbHost": "blox-ref-db.cvgqg8c84kbe.us-east-1.rds.amazonaws.com",
           "dbName": "blox_db",
           "apiKey": "20d9b2ae-2e06-4795-b35b-4719f1b37f21",
