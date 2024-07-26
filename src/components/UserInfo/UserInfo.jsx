@@ -146,6 +146,9 @@ function UserInfo() {
           <p>@{user.username}</p>
           <p>{user.email}</p>
         </div>
+        <div class={styles.outer}>
+          <div class={styles.inner}></div>
+        </div>
         <div className={styles.referralCode}>
           <p>User Info</p>
           <div className={styles.refresh_container}>
