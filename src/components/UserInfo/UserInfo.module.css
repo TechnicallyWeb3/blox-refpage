@@ -11,7 +11,7 @@
     border-radius: 20px;
     padding: 30px;
     background: rgb(0,124,255) !important;
-background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
+    background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
     margin-right: 20%;
     margin-left: 20%;
 
@@ -20,25 +20,22 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
 
     &:hover, &:focus-visible {
         scale: 1.01
-      }
+    }
 }
 
 .userbox {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    
 }
 
 .userdetails {
     background: rgba(0, 123, 255, 0) !important;
 }
 
-
 .userdetails img {
     width: 50px;
     border-radius: 5px;
-    
 }
 
 .userdetails p {
@@ -53,9 +50,7 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
 
 .userId {
     font-size: 36px;
-    
 }
-
 
 .neumorphicbtn {
     font-size: 20px;
@@ -68,11 +63,25 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
 
     &:hover, &:focus-visible {
         scale: 1.01
-      }
+    }
+}
 
-    
-  }
-  
+.referralLink {
+    margin-top: 10px;
+    background: rgba(0, 123, 255, 0) !important;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.referralLink a {
+    color: black;
+    text-decoration: none;
+}
+
+.referralLink a:hover {
+    text-decoration: underline;
+}
 
 .referralCode {
     background: rgba(0, 123, 255, 0) !important;
@@ -80,9 +89,8 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
 
 .refCode {
     font-size: 30px;
-    
-    
 }
+
 .referralCode p {
     background: rgba(0, 123, 255, 0) !important;
     color: white;
@@ -97,7 +105,7 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
     background: rgba(0, 123, 255, 0) !important;
 }
 
-.refresh_container button img{
+.refresh_container button img {
     width: 30px;
 }
 
@@ -106,17 +114,13 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
     text-align: center;
     font-size: 13px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Smooth transition over 0.3 seconds */
-  
+    transition: transform 0.3s ease;
+
     &:hover,
     &:focus-visible {
-      transform: scale(1.05); /* Scale up to 1.21 on hover or focus */
+        transform: scale(1.05);
     }
-  }
-  
-  
-  
-
+}
 
 @media (max-width: 768px) {
     .userInfo {
@@ -151,5 +155,6 @@ background: linear-gradient(347deg, #006adb 0%, #2e91fc 100%) !important;
         font-size: 20px;
         margin-bottom: 15px;
         font-weight: 900;
+     background: rgba(0, 123, 255, 0) !important; 
     }
 }
