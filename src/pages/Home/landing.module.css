@@ -1,0 +1,23 @@
+.spline {
+    display: flex;
+    justify-content: center;
+}
+
+
+.spline img {
+    width: 100%;
+}
+
+.splineContainer {
+    width: 100%;
+    /* Adjust width as needed */
+    height: 400px;
+    /* Adjust height as needed */
+}
+
+.customSpline {
+    width: 100%;
+    /* Adjust width as needed */
+    height: 100%;
+    /* Adjust height as needed */
+}
