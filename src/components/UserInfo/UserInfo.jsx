@@ -134,6 +134,7 @@ function UserInfo() {
   }
 
   return (
+      <div className={styles.userbox}>
     <div className={styles.userInfo}>
       <div className={styles.userdetails}>
         <img src={userImage} alt="User" />
@@ -152,9 +153,10 @@ function UserInfo() {
             <img src={copy} alt="Copy" />
           </button>
         </div>
-        {referralLink && <p>Referral Link: <a href={referralLink}>{referralLink}</a></p>}
+        {referralLink && <p className={styles.referralLink}>Referral Link: <a href={referralLink}  className={styles.referralLink}>{referralLink}</a></p>}
       </div>
     </div>
+</div>
   );
 }
 

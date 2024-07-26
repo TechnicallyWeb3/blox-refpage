@@ -5,7 +5,8 @@ import UserInfo from '../UserInfo/UserInfo';
 import ReferralStats from '../ReferralStats/ReferralStats';
 import TierProgress from '../TierProgress/TierProgress';
 import PointHistory from '../PointHistory/PointHistory';
-
+import blob from '../../assets/blob.jpg'
+import Landing from './landing';
 function ReferralProgram() {
     const { isAuthenticated, user } = useDynamicContext();
 
@@ -15,11 +16,11 @@ function ReferralProgram() {
 
     return (
         <div className={styles.container}>
-            <h2>Blox Referral Program</h2>
-            <p>Sign up, Refer Friends, Earn Points!</p>
-            <p style={{ marginTop: "25px", fontWeight: "600" }}>
-                Hi {user?.firstName}, Check Out All Your Rewards!
-            </p>
+            {/* <h2>Blox Referral Program</h2>
+            <p >Sign up, refer friends, earn points!</p> */}
+            <Landing /> 
+            {/* isSplineLoaded={isSplineLoaded} setIsSplineLoaded={setIsSplineLoaded} */}
+            <p style={{ marginTop: "25px",fontWeight:"600", fontSize: "40px" }}>Hi {user?.firstName}, check out all your rewards!</p>
             <UserInfo />
             <ReferralStats />
             <TierProgress />
