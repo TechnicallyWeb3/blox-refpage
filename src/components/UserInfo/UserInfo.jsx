@@ -25,6 +25,13 @@ function UserInfo() {
   const [referralCode, setReferralCode] = useState("");
   const [referralLink, setReferralLink] = useState("");
 
+  // Utility function to extract referral code from URL
+  const extractReferralCode = () => {
+    const url = window.location.href;
+    const urlParams = new URLSearchParams(new URL(url).search);
+    return urlParams.get('referralCode') || "";
+  };
+
   // Function to generate a new referral code and link
   const generateNewReferralCode = () => {
     const newCode = generateReferralCode();
@@ -63,8 +70,9 @@ function UserInfo() {
 
   const handleRegister = async () => {
     if (isAuthenticated && user?.userId) {
-      const newCode = generateNewReferralCode();
-      await handleAddUser(user.userId, newCode);
+      const usedCode = extractReferralCode();
+      console.log(usedCode);
+      await handleAddUser(user.userId, usedCode);
     }
   };
 
@@ -82,21 +90,21 @@ function UserInfo() {
       .catch(err => console.error('Failed to copy:', err));
   };
 
-    const fetchUserData = async () => {
-      try {
-        console.log(`Fetching data for ${user?.userId}`)
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/userData?id=${user?.userId}`);
-        if (response.data && !response.data.error) {
-          console.log("User data found.");
-        } else {
-          handleRegister();
-          console.log("User registered.");
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  const fetchUserData = async () => {
+    try {
+      console.log(`Fetching data for ${user?.userId}`)
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/userData?id=${user?.userId}`);
+      if (response.data && !response.data.error) {
+        console.log("User data found.");
+      } else {
         handleRegister();
+        console.log("User registered.");
       }
-    };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      handleRegister();
+    }
+  };
 
   const fetchReferralCodeData = async () => {
     try {
@@ -115,6 +123,8 @@ function UserInfo() {
   };
 
   useEffect(() => {
+    const usedCode = extractReferralCode();
+    console.log(usedCode);
     if (isAuthenticated && user?.userId && !isLoggedIn) {
       setIsLoggedIn(true);
       fetchUserData();
@@ -128,29 +138,29 @@ function UserInfo() {
   }
 
   return (
-      <div className={styles.userbox}>
-    <div className={styles.userInfo}>
-      <div className={styles.userdetails}>
-        <img src={userImage} alt="User" />
-        <p className={styles.name}>{user.firstName} {user.lastName}</p>
-        <p>@{user.username}</p>
-        <p>{user.email}</p>
-      </div>
-      <div className={styles.referralCode}>
-        <p>User Info</p>
-        <div className={styles.refresh_container}>
-          <p className={styles.refCode}>{referralCode}</p>
-          <button className={styles.neumorphicbtn} onClick={handleRefresh}>
-            <img src={refresh} alt="Refresh" />
-          </button>
-          <button className={styles.neumorphicbtn} onClick={() => copyToClipboard(referralLink)}>
-            <img src={copy} alt="Copy" />
-          </button>
+    <div className={styles.userbox}>
+      <div className={styles.userInfo}>
+        <div className={styles.userdetails}>
+          <img src={userImage} alt="User" />
+          <p className={styles.name}>{user.firstName} {user.lastName}</p>
+          <p>@{user.username}</p>
+          <p>{user.email}</p>
         </div>
-        {referralLink && <p className={styles.referralLink}>Referral Link: <a href={referralLink}  className={styles.referralLink}>{referralLink}</a></p>}
+        <div className={styles.referralCode}>
+          <p>User Info</p>
+          <div className={styles.refresh_container}>
+            <p className={styles.refCode}>{referralCode}</p>
+            <button className={styles.neumorphicbtn} onClick={handleRefresh}>
+              <img src={refresh} alt="Refresh" />
+            </button>
+            <button className={styles.neumorphicbtn} onClick={() => copyToClipboard(referralLink)}>
+              <img src={copy} alt="Copy" />
+            </button>
+          </div>
+          {referralLink && <p className={styles.referralLink}>Referral Link: <a href={referralLink} className={styles.referralLink}>{referralLink}</a></p>}
+        </div>
       </div>
     </div>
-</div>
   );
 }
 
