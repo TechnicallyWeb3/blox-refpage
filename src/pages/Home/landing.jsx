@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import style from "./landing.module.css";
 import Spline from '@splinetool/react-spline';
-import img from '../../assets/reed1.png';
-import img1 from '../../assets/reed-mob1.png';
+import img from '../../assets/BG2.png';
+import img1 from '../../assets/BGMOB1.png';
 
 export default function Landing() {
   const [isMobile, setIsMobile] = useState(false);
