@@ -20,7 +20,7 @@ function ReferralProgram() {
             <p >Sign up, refer friends, earn points!</p> */}
             <Landing /> 
             {/* isSplineLoaded={isSplineLoaded} setIsSplineLoaded={setIsSplineLoaded} */}
-            <p style={{ marginTop: "25px",fontWeight:"600" }}>Hi {user?.firstName}, check out all your rewards!</p>
+            <p style={{ marginTop: "25px",fontWeight:"600", fontSize: "40px" }}>Hi {user?.firstName}, check out all your rewards!</p>
             <UserInfo />
             <ReferralStats />
             <TierProgress />

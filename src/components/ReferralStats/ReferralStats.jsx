@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import styles from './ReferralStats.module.css';
-import point from "../../assets/reward.png";
+import point from "../../assets/reward.png"
 
 function ReferralStats() {
     const { isAuthenticated, user } = useDynamicContext(); // Get authentication and user data
@@ -88,16 +88,17 @@ function ReferralStats() {
                             </div>
                         </div>
                     </div>
+
                     <div className={styles.stats}>
-                        <div className={styles.wrapper}>
-                            <p className={styles.point}>Points</p>
-                            <div className={styles.points}>
-                                <p>{userData.total_points || 0}</p> {/* Display points here */}
-                                <img src={point} alt="Reward Points" />
-                            </div>
+                <div className={styles.wrapper}>
+                        <p className={styles.point}>Points</p>
+                        <div className={styles.points}>
+                            <p>{userData.total_points || 0}</p> {/* Display points here */}
+                    <img src={point} alt="Points" className={styles.pointImage} />
                         </div>
                     </div>
                 </div>
+              </div>
             )}
         </div>
     );
