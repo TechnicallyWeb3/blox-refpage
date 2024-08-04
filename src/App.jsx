@@ -11,7 +11,7 @@ function App() {
   return (
     <DynamicContextProvider
       settings={{
-        environmentId: "1b3f905d-1beb-4aa4-8dfa-dd815370e883",
+        environmentId: "f33dce35-fedc-48b4-a0b9-ac69b89345af",
         // walletConnectorExtensions: [EthersExtension],
       }}
     >
