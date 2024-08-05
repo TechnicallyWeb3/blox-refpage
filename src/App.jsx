@@ -11,7 +11,7 @@ function App() {
   return (
     <DynamicContextProvider
       settings={{
-        environmentId: "f33dce35-fedc-48b4-a0b9-ac69b89345af",
+        environmentId: import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID,
         // walletConnectorExtensions: [EthersExtension],
       }}
     >
