@@ -11,6 +11,11 @@ import logo from '../../assets/BLOXlogo.svg'
 function Header() {
     return (
         <header className={styles.header}>
+            <a href="https://bloxsolutions.app">
+                <button className="appBtn">
+                    Go To App
+                </button>
+            </a>
             <DynamicWidget />
         </header>
     );

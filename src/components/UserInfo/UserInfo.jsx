@@ -22,7 +22,7 @@ const generateReferralCode = () => {
 function UserInfo() {
   const { isAuthenticated, user } = useDynamicContext();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [referralCode, setReferralCode] = useState("");
+  const [referralCode, setReferralCode] = useState("ERROR-GENERATING-CODE");
   const [referralLink, setReferralLink] = useState("");
 
   // Utility function to extract referral code from URL
@@ -35,8 +35,6 @@ function UserInfo() {
   // Function to generate a new referral code and link
   const generateNewReferralCode = () => {
     const newCode = generateReferralCode();
-    setReferralCode(newCode);
-    setReferralLink(`https://ref.bloxsolutions.app/?referralCode=${newCode}`);
     return newCode;
   };
 
@@ -64,7 +62,10 @@ function UserInfo() {
       body: JSON.stringify({ id: id, oldReferralCode: oldCode, newReferralCode: newCode })
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+
+      })
       .catch(error => console.error('Error:', error));
   }
 
