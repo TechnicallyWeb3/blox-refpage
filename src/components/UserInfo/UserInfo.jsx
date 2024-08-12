@@ -23,7 +23,7 @@ function UserInfo() {
   const { isAuthenticated, user } = useDynamicContext();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [referralCode, setReferralCode] = useState("ERROR-GENERATING-CODE");
-  const [referralLink, setReferralLink] = useState("");
+  const [referralLink, setReferralLink] = useState("refresh to generate a link");
 
   // Utility function to extract referral code from URL
   const extractReferralCode = () => {
