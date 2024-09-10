@@ -2,7 +2,7 @@ import Home from './pages/Home/Home'
 import { useState } from 'react';
 import {
   DynamicContextProvider,
-} from "@/dynamic-labs/sdk-react-core";
+} from "@dynamic-labs/sdk-react-core";
 // import { EthersExtension } from "@dynamic-labs/ethers-v5";
 import Banner from "./components/banner/Banner";
 
