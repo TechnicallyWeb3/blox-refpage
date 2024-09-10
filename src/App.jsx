@@ -21,8 +21,8 @@ function App() {
           ],
       }}
     >
-      <Home/>
       <Banner />
+      <Home/>
     </ DynamicContextProvider>
   )
 }
