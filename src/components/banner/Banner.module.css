@@ -1,0 +1,356 @@
+.modal{
+  position: relative;
+}
+.bannerContainer {
+  width: 100%;
+  background-color: #00a2e8;
+  color: black;
+  padding-bottom: 1rem;
+  position: sticky; 
+  top: 0; 
+  z-index: 1020; 
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  
+  /* Electric blue underglow */
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.75), 
+              0 0 30px rgba(0, 123, 255, 0.5),
+              0 0 45px rgba(0, 123, 255, 0.25);
+}
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.leftSection, .rightSection {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.middleSection {
+  flex: 1;
+  text-align: center;
+}
+
+.earlyAccessButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* CSS */
+.earlyAccessButton {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.earlyAccessButton:active,
+.earlyAccessButton:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .earlyAccessButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+.earlyAccessButton:hover {
+  background-color: #0056b3;
+}
+
+.mobileDropdown {
+  display: none;
+}
+
+
+/* Keyframes for continuous scrolling */
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .bannerContainer {
+
+    z-index: 100; 
+  
+  }
+
+
+  .leftSection, .rightSection, .middleSection {
+    display: none;
+  }
+
+  .mobileDropdown {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .dropdownContent {
+    background-color: #0e0e0e;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+  }
+
+  .mobileText {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .dropdownIcon {
+    margin-left: 0.5rem;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Modal Styles (for both mobile and desktop) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000 !important; 
+}
+
+.modalContent {
+  background: rgb(104, 104, 104);
+
+  backdrop-filter: blur(6px) saturate(281%);
+  -webkit-backdrop-filter: blur(6px) saturate(181%);
+  background-color: rgba(21, 21, 21, 0.966);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px; /* Adjust based on your design */
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%; /* Adjust based on your design */
+  overflow: hidden;
+}
+
+
+
+.priceContainer {
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    90deg,
+    #296eb3 0%,
+    #003b81 100%
+  );
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  padding: 30px;
+}
+
+.priceStriked {
+  font-size: 1.0rem;
+  color: #ffffff;
+  text-decoration: line-through;
+}
+
+.priceCurrent {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.priceDescription {
+  font-size: 1.3rem;
+  color: #fcfcfc;
+}
+
+.paragraphContainer {
+  margin-bottom: 1rem;
+}
+
+.accessButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.accessButton {
+  background-color: #007bff57;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+.accessButton1 {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+.accessButton2 {
+  background-color: #c4c000;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+
+.accessButton1:hover {
+  background-color: #0056b3;
+}
+
+.banner1 {
+  background: linear-gradient(90deg, #33a530 0%, #4eee49 50%, #33a530 100%);
+  /* background: linear-gradient(90deg, #003d7a 0%, #0056b3 50%, #003d7a 100%); */
+  transform: rotate(-45deg);
+  position: absolute;
+  z-index: 1;
+  padding: 0.5rem 4rem;
+  top: 2rem;
+  left: -4rem;
+  border: 2px solid #91ff69;
+  /* border: 2px solid #007bff; */
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.marquee {
+  --gap: 1rem;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  border: 2px dashed lightgray; /* For demonstration purposes */
+  background-color: rgb(21, 21, 21);
+}
+
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll 15s linear infinite; /* Animation is enabled by default */
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+/* Pause animation when reduced-motion is set */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__content {
+    animation-play-state: paused;
+  }
+}
+
+/* Reverse animation (if needed) */
+.marquee--reverse .marquee__content {
+  animation-direction: reverse;
+}
+
+/* Pause on hover */
+.marquee--hover-pause:hover .marquee__content {
+  animation-play-state: paused;
+}
+
+/* Attempt to size parent based on content */
+.marquee--fit-content {
+  max-width: fit-content;
+}
+
+/* Absolute position the duplicate container */
+.marquee--pos-absolute .marquee__content:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes scroll-abs {
+  from {
+    transform: translateX(calc(100% + var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Styling for content items */
+.marquee__content > * {
+  flex: 0 0 auto;
+  color: black;
+  margin: 2px;
+  padding: 0.3rem 0.1rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+
+.showMoreButton {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1rem;
+  padding: 0;
+}
